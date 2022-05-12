@@ -21,9 +21,9 @@ Use:
 
  
                     1) 
-                    run a screen : screen -dmS [nameofscreen]
+                    start a screen : screen -dmS [nameofscreen]
                     show your new screen : screen -ls
-                    join yout screen : screen -r [1234.nameofscreen]
+                    join your screen : screen -r [1234.nameofscreen]
                     
                     2)
                     Run script : ./watcher
