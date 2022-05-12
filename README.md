@@ -15,8 +15,8 @@
 
 Description : 
 
-                                  Ban all Botnet IPs that attempt to connect via ssh with "authentication failure" or "invalid user"
-                                  #This script use UFW Firewall
+                    Ban all Botnet IPs that attempt to connect via ssh with "authentication failure" or "invalid user"
+                    #This script use UFW Firewall
 Use:
 
  
