@@ -36,3 +36,7 @@ Use:
                     Show Banned IPs:
                     http://your-ip/Wall_of_the_shame.html
  
+
+
+
+![Watcher](https://github.com/DrM4CH1N3/The_Watcher/blob/main/watcher_screen.png)
