@@ -176,7 +176,7 @@ do
                             ip_ban=$( echo -e "$ip <br />" >> banban )
                             var_banban=$(cat banban)
                             regex_ipv4="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
-                            html=$( cat banban | sort | uniq >> $outputfile ) #/home/shell/Watcher/Wall_of_the_shame.html )
+                            html=$( cat banban | sort | uniq >> $outputfile )
                             #add new rule to firewall
                             sudo ufw deny from $ip to any &>/dev/null
                             echo -e "\c $endcol"
