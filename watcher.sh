@@ -6,7 +6,7 @@
 #---------------------------------------------#
 # Creator : Cedric H.                         #
 # Version : 1.0                               #
-# Last update : 12/05/2022                    #
+# Last update : 06/08/2023                    #
 ###############################################
 #Colors
 red="\e[1;31m"
@@ -19,6 +19,9 @@ ppl="\e[1;35m"
 qst="\e[1;31;1;41m"
 line="\e[1;37;1;40m"
 endcol="\e[0m"
+
+#OUTPUT FILE
+outputfile="/home/[YOUR_USER]/Watcher/Wall_of_the_shame.html"
 
 clear
         if [[ "$EUID" -ne 0 ]]; then
@@ -129,6 +132,7 @@ do
     #Check format IPV4
     regex_ipv4="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
     #Check format IPV6 
+     
     #regex_ipv6="(?<![:.\w])(?:[A-F0-9]{1,4}:){7}[A-F0-9]{1,4}(?![:.\w])"
     #catch IP and record 
     record=$(sudo cat /var/log/auth.log | tail -n 10 | grep ssh | awk '{ print $3,$5,$6,$7,$8,$9,$10,$12,$13,$14,$15,$16 }' | grep "'$regex_ipv4'\|Invalid\ user" >> watcher_record_ip )
@@ -167,17 +171,17 @@ do
                     fi
                         if [[ $nbr_attempt_by_ip -gt $nbr_attempt ]]
                             then
-                            echo -e "$red▄\c"                    
+                            echo -e "$red▄\c $endcol"
                             d="d"
                             ip_ban=$( echo -e "$ip <br />" >> banban )
                             var_banban=$(cat banban)
                             regex_ipv4="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
-                            html=$( cat banban | sort | uniq >> /var/www/html/Wall_of_the_shame.html )
+                            html=$( cat banban | sort | uniq >> $outputfile ) #/home/shell/Watcher/Wall_of_the_shame.html )
                             #add new rule to firewall
                             sudo ufw deny from $ip to any &>/dev/null
                             echo -e "\c $endcol"
                             else
-                            echo -e "$green▀\c$endcol"
+                            echo -e "$green▀\c $endcol"
                         fi
 
                     (( m=m+1 ))
