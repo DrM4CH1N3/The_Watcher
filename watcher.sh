@@ -22,7 +22,8 @@ line="\e[1;37;1;40m"
 endcol="\e[0m"
 
 #OUTPUT FILE
-outputfile="/home/shell/Watcher/Wall_of_the_shame.html"
+absolute_path=${pwd}
+outputfile="$absolute_path/Wall_of_the_shame.html"
 
 clear
         if [[ "$EUID" -ne 0 ]]; then
