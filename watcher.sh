@@ -1,12 +1,12 @@
 #!/bin/bash
 ###############################################
-#     --The Watcher "Botnet Bouncer"--        #
+#   --The Watcher "SSH Botnet Bouncer"--      #
 #          #FIREWALL ASSISTANT                #
 #        --Simple Bash Training--             #
 #---------------------------------------------#
 # Creator : Cedric H.                         #
 # Version : 1.0                               #
-# Last update : 12/05/2022                    #
+# Last update : 01/08/2023                    #
 ###############################################
 #Colors
 red="\e[1;31m"
@@ -92,8 +92,10 @@ do
     tput cup 1 0
         if [[ $nbr_online -gt "1" ]]
         then
+        printf "$red                 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ WATCHER V1.0 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀$endcol$white \n"
         echo -e "$red$nbr_online Users online :   "
         else
+        printf "$red                 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ WATCHER V1.0 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀$endcol$white \n"
         echo -e "$red$nbr_online User online :    "
         fi
     printf "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀$endcol$white \n"
@@ -108,9 +110,9 @@ do
         user_id=$(lslogins -u | grep $wuis | awk '{print $1}' )
         if [[ $user_id -gt "1000" ]]
             then
-            echo -e "$green$user_by \c$encol"
+            echo -e " $green$user_by \c$encol"
             else
-            echo -e "$red$user_by \c$endcol"
+            echo -e " $red$user_by \c$endcol"
         fi
         (( m=m+1 ))
     done
@@ -118,7 +120,7 @@ do
     wuwu
 
     printf "\n$red▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀$endcol$white \n"
-    tput cup 6 0 
+    tput cup 7 0 
     printf "$red Last SSH Connexions \n"
     printf "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀$endcol$white \n"
     last -a | head -n 5
@@ -156,17 +158,17 @@ do
     m=1
     #Check numbers of lines
     nbr_lines=$(cat watcher_record_ip4 | wc -l)
+    nbr_lines6=$(cat watcher_record_ip6 | wc -l)
     #tput sc record the position of cursor
     tput sc
 
-        until [ $m -gt $nbr_lines ]
+        until [ $m -gt $nbr_lines ] 
             do
                 ip=$(cat watcher_record_ip4 | awk 'NR=='$m'' | grep -o -E "$regex_ipv4")
-                ip6=$(cat watcher_record_ip4 | awk 'NR=='$m'' | grep -o -E "$regex_ipv6")
-                nbr_attempt_by_ip4=$(cat watcher_record_ip4 | grep -o "$ip" | wc -l)
-                nbr_attempt_by_ip6=$(cat watcher_record_ip6 | grep -o "$ip6" | wc -l)
+                nbr_attempt_by_ip4=$(grep -o "$ip" watcher_record_ip4 | wc -l)
                 #Number of attempts
                 nbr_attempt="3"
+
                     if [[ $m -ge "1140" ]]
                     then
                     sudo sed -i '1d;127d' watcher_record_ip4
@@ -191,6 +193,25 @@ do
                                 echo -e "$green▀\c $endcol"
                             fi
                         fi
+
+                    (( m=m+1 ))
+            done
+
+        until [ $m -gt $nbr_lines6 ] 
+            do
+                ip6=$(cat watcher_record_ip6 | awk 'NR=='$m'' | grep -o -E "$regex_ipv6")
+                nbr_attempt_by_ip6=$(grep -o "$ip6" watcher_record_ip6 | wc -l)
+                #Number of attempts
+                nbr_attempt="3"
+
+                    if [[ $m -ge "1140" ]]
+                    then
+                    sudo sed -i '1d;127d' watcher_record_ip6
+                    fi
+                    if [[ $m -eq "127" ]] || [[ $m -eq "254" ]] || [[ $m -eq "381" ]] || [[ $m -eq "508" ]] || [[ $m -eq "635" ]] || [[ $m -eq "889" ]] || [[ $m -eq "1016" ]]
+                    then
+                    echo -e "\n"
+                    fi
 
                         if [ -s "watcher_record_ip6" ]; then
 
