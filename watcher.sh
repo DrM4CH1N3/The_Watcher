@@ -83,7 +83,7 @@ $red    ⠀⠀⠀⠀⠓⠒⢒⠖⠖⡶⣶⣶⣿⣷⣷⣷⣾⣿⢷⡲⠲⣖⠚⠚
 $red    ⠀⠀⠀⠀⠀⠀⠁⢀⠜⠈⡼⠘⡏⡟⡟⢸⠡⢳⠁⠑⡄⠀⠑⠀⠀⠀⠀⠀
 $red    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⢠⠃⠀⡇⠀⡇⠀⢡⠀⠈⠀⠀⠀
 $endcol"
-sleep 200
+sleep 2
 clear
 #Clear the cursor
 tput civis
@@ -99,7 +99,7 @@ do
         printf "$red                 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ ◬  WATCHER V1.0 ◬  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀$endcol$white \n"
         echo -e "$red$nbr_online User online :    "
         fi
-    printf "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀$endcol$white \n"
+    printf "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀$endcol \n"
     function wuwu {
     #users online
     m=1
@@ -184,9 +184,8 @@ do
                                 echo -e "$red▄\c $endcol"
                                 d="d"
                                 ip_ban=$( echo -e "$ip <br />" >> banban )
-                                var_banban=$(cat banban)
                                 regex_ipv4="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
-                                html=$( cat banban | sort | uniq >> $outputfile ) 
+                                html=$( sort -u banban > $outputfile ) 
                                 #add new rule to firewall
                                 sudo ufw deny from $ip to any &>/dev/null
                                 echo -e "\c $endcol"
@@ -221,7 +220,6 @@ do
                                 echo -e "$red▄\c $endcol"
                                 d="d"
                                 ip_ban=$( echo -e "$ip6 <br />" >> banban )
-                                var_banban=$(cat banban)
                                 regex_ipv6="\b(?:[0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}\b"
                                 html=$( cat banban | sort | uniq >> $outputfile ) 
                                 #add new rule to firewall
