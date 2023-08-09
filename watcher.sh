@@ -6,7 +6,7 @@
 #---------------------------------------------#
 # Creator : Cedric H.                         #
 # Version : 1.0                               #
-# Last update : 06/08/2023                    #
+# Last update : 12/05/2022                    #
 ###############################################
 #Colors
 red="\e[1;31m"
@@ -21,7 +21,7 @@ line="\e[1;37;1;40m"
 endcol="\e[0m"
 
 #OUTPUT FILE
-outputfile="/home/[YOUR_USER]/Watcher/Wall_of_the_shame.html"
+outputfile="/home/shell/Watcher/Wall_of_the_shame.html"
 
 clear
         if [[ "$EUID" -ne 0 ]]; then
@@ -75,9 +75,9 @@ $red    ⠀⠀⠀⠀⠀⠀⠀⠈⢆⢀⢣⣠⢣$encol$green⡟⢻⣌$endcol$red�
 $red   ⠀⠀⠀ ⠀⢄⠀⠈⠢⡢⣳⡿$encol$green⣡⡟⠀⠀⠹⣎$endcol$red⢻⣝⣕⡴⠊⠀⡀⠀⠀⠀⠀ \ \/  \/ / _  | __/ __| '_ \ / _ \ '__|
 $red       ⢀⡀⠈⢓⣿⣾⡟$encol$green⣱⠏⠀⠀⠀⠀⠹⣦$endcol$red⢻⣿⣮⣒⠁⠀⡀⠀⠀⠀  \  /\  / (_| | || (__| | | |  __/ |  
 $red    ⠀⠀⠀⠀⠀⠩⢷⣿⡟$encol$green⣼⣯⣴⣞⣛⣙⣓⡦⣜⣧$endcol$red⡹⣿⡶⠍⠁⠀⠀⠀⠀   \/  \/ \__,_|\__\___|_| |_|\___|_| 
-$red    ⠀⠀⠀⠀⠀⢉⣽⢏$encol$green⣼⣿⡛⠉⣇⢿⡿⢸⠋⢙⣿⢷$endcol$red⡹⣯⣉⠁⠀⠀⠀⠀          FIREWALL ASSISTANT 
-$red    ⠀⠀⠀⠀⠀⣐⢎$encol$green⡾⠃⠈⠙⠷⣮⣵⣾⣥⠶⠛⠁⠈⢷⡜$endcol$red⣆⠀⠈⠁⠀⠀               Botnet Bouncer
-$red    ⠀⠀⠀⠈⢡⢣$encol$green⣾⣁⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣈⣿⣌$endcol$red⠌⠁⠀⠀⠀                   V1.0
+$red    ⠀⠀⠀⠀⠀⢉⣽⢏$encol$green⣼⣿⡛⠉⣇⢿⡿⢸⠋⢙⣿⢷$endcol$red⡹⣯⣉⠁⠀⠀⠀⠀           FIREWALL ASSISTANT 
+$red    ⠀⠀⠀⠀⠀⣐⢎$encol$green⡾⠃⠈⠙⠷⣮⣵⣾⣥⠶⠛⠁⠈⢷⡜$endcol$red⣆⠀⠈⠁⠀⠀           SSH Botnet Bouncer
+$red    ⠀⠀⠀⠈⢡⢣$encol$green⣾⣁⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣈⣿⣌$endcol$red⠌⠁⠀⠀⠀                  V1.0
 $red    ⠀⠀⠀⠀⠓⠒⢒⠖⠖⡶⣶⣶⣿⣷⣷⣷⣾⣿⢷⡲⠲⣖⠚⠚⠂⠀⠀⠀
 $red    ⠀⠀⠀⠀⠀⠀⠁⢀⠜⠈⡼⠘⡏⡟⡟⢸⠡⢳⠁⠑⡄⠀⠑⠀⠀⠀⠀⠀
 $red    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⢠⠃⠀⡇⠀⡇⠀⢡⠀⠈⠀⠀⠀
@@ -132,12 +132,15 @@ do
     #Check format IPV4
     regex_ipv4="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
     #Check format IPV6 
-     
-    #regex_ipv6="(?<![:.\w])(?:[A-F0-9]{1,4}:){7}[A-F0-9]{1,4}(?![:.\w])"
-    #catch IP and record 
-    record=$(sudo cat /var/log/auth.log | tail -n 10 | grep ssh | awk '{ print $3,$5,$6,$7,$8,$9,$10,$12,$13,$14,$15,$16 }' | grep "'$regex_ipv4'\|Invalid\ user" >> watcher_record_ip )
+    regex_ipv6="(?<![:.\w])(?:[A-F0-9]{1,4}:){7}[A-F0-9]{1,4}(?![:.\w])"
+    
+    #catch IPv4 and record 
+    record=$(sudo cat /var/log/auth.log | tail -n 10 | grep ssh | awk '{ print $3,$5,$6,$7,$8,$9,$10,$12,$13,$14,$15,$16 }' | grep "'$regex_ipv4'\|Invalid\ user" >> watcher_record_ip4 )
+    #catch IPv6 and record 
+    record6=$(sudo cat /var/log/auth.log | tail -n 10 | grep ssh | awk '{ print $3,$5,$6,$7,$8,$9,$10,$12,$13,$14,$15,$16 }' | grep "'$regex_ipv6'\|Invalid\ user" >> watcher_record_ip6 )
     #authentication failure
-    record2=$(sudo cat /var/log/auth.log | tail -n 10 | grep ssh | awk '{ print $3,$5,$6,$7,$8,$9,$10,$12,$13,$14,$15,$16 }' | grep "'$regex_ipv4'\authentication\ failure" >> watcher_record_ip )
+    record2=$(sudo cat /var/log/auth.log | tail -n 10 | grep ssh | awk '{ print $3,$5,$6,$7,$8,$9,$10,$12,$13,$14,$15,$16 }' | grep "'$regex_ipv4'\authentication\ failure" >> watcher_record_ip4 )
+    record3=$(sudo cat /var/log/auth.log | tail -n 10 | grep ssh | awk '{ print $3,$5,$6,$7,$8,$9,$10,$12,$13,$14,$15,$16 }' | grep "'$regex_ipv6'\authentication\ failure" >> watcher_record_ip6 )
     tput cup 17 0
     #Show logs for invalid users trying to login  
     logz=$(sudo cat /var/log/auth.log | tail -n 20 | grep ssh | awk '{ print $1,$2,$3,$5,$6,$7,$8,$9,$10,$12,$13,$14,$15,$16  }' | grep "Invalid\| user")
@@ -152,38 +155,60 @@ do
     #start @ Line 1
     m=1
     #Check numbers of lines
-    nbr_lines=$(cat watcher_record_ip | wc -l)
+    nbr_lines=$(cat watcher_record_ip4 | wc -l)
     #tput sc record the position of cursor
     tput sc
 
         until [ $m -gt $nbr_lines ]
             do
-                ip=$(cat watcher_record_ip | awk 'NR=='$m'' | grep -o -E "$regex_ipv4")
-                nbr_attempt_by_ip=$(cat watcher_record_ip | grep -o "$ip" | wc -l)
-                nbr_attempt="4"
+                ip=$(cat watcher_record_ip4 | awk 'NR=='$m'' | grep -o -E "$regex_ipv4")
+                ip6=$(cat watcher_record_ip4 | awk 'NR=='$m'' | grep -o -E "$regex_ipv6")
+                nbr_attempt_by_ip4=$(cat watcher_record_ip4 | grep -o "$ip" | wc -l)
+                nbr_attempt_by_ip6=$(cat watcher_record_ip6 | grep -o "$ip6" | wc -l)
+                #Number of attempts
+                nbr_attempt="3"
                     if [[ $m -ge "1140" ]]
                     then
-                    sudo sed -i '1d;127d' watcher_record_ip
+                    sudo sed -i '1d;127d' watcher_record_ip4
                     fi
                     if [[ $m -eq "127" ]] || [[ $m -eq "254" ]] || [[ $m -eq "381" ]] || [[ $m -eq "508" ]] || [[ $m -eq "635" ]] || [[ $m -eq "889" ]] || [[ $m -eq "1016" ]]
                     then
                     echo -e "\n"
                     fi
-                        if [[ $nbr_attempt_by_ip -gt $nbr_attempt ]]
-                            then
-                            echo -e "$red▄\c $endcol"
-                            d="d"
-                            ip_ban=$( echo -e "$ip <br />" >> banban )
-                            var_banban=$(cat banban)
-                            regex_ipv4="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
-                            html=$( cat banban | sort | uniq >> $outputfile )
-                            #add new rule to firewall
-                            sudo ufw deny from $ip to any &>/dev/null
-                            echo -e "\c $endcol"
+                        if [ -s "watcher_record_ip4" ]; then
+                            if [[ $nbr_attempt_by_ip4 -gt $nbr_attempt ]]
+                                then
+                                echo -e "$red▄\c $endcol"
+                                d="d"
+                                ip_ban=$( echo -e "$ip <br />" >> banban )
+                                var_banban=$(cat banban)
+                                regex_ipv4="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
+                                html=$( cat banban | sort | uniq >> $outputfile ) 
+                                #add new rule to firewall
+                                sudo ufw deny from $ip to any &>/dev/null
+                                echo -e "\c $endcol"
                             else
-                            echo -e "$green▀\c $endcol"
+                                echo -e "$green▀\c $endcol"
+                            fi
                         fi
 
+                        if [ -s "watcher_record_ip6" ]; then
+
+                            if [[ $nbr_attempt_by_ip6 -gt $nbr_attempt ]]
+                                then
+                                echo -e "$red▄\c $endcol"
+                                d="d"
+                                ip_ban=$( echo -e "$ip6 <br />" >> banban )
+                                var_banban=$(cat banban)
+                                regex_ipv6="(?<![:.\w])(?:[A-F0-9]{1,4}:){7}[A-F0-9]{1,4}(?![:.\w])"
+                                html=$( cat banban | sort | uniq >> $outputfile ) 
+                                #add new rule to firewall
+                                sudo ufw deny from $ip6 to any &>/dev/null
+                                echo -e "\c $endcol"
+                                else
+                                echo -e "$green▀\c $endcol"
+                            fi
+                        fi
                     (( m=m+1 ))
             done
     #tput rc go to recorded position
