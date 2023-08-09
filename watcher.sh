@@ -1,6 +1,6 @@
 #!/bin/bash
 ###############################################
-#   --The Watcher "SSH Botnet Bouncer"--      #
+#    --The Watcher "SSH Botnet Bouncer--      #
 #          #FIREWALL ASSISTANT                #
 #        --Simple Bash Training--             #
 #---------------------------------------------#
@@ -9,11 +9,12 @@
 # Last update : 01/08/2023                    #
 ###############################################
 #Colors
-red="\e[1;31m"
+red="\e[1;91m"
 red2="\e[1;33;1;41m"
 white="\e[1;37m"
 blue="\e[34m"
 green="\e[1;32m"
+cyan="\e[1;36m"
 yellow="\e[1;33m"
 ppl="\e[1;35m"
 qst="\e[1;31;1;41m"
@@ -71,18 +72,18 @@ sleep 0.25
 clear
 printf "$red⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 $red    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢡⠀⠈⣀⢊⡜⠄⡇⠀⡐⠀⢀⠀⠀⠀⠀⠀⠀⠀  __    __      _       _        
-$red    ⠀⠀⠀⠀⠀⠀⠀⠈⢆⢀⢣⣠⢣$encol$green⡟⢻⣌$endcol$red⢴⡴⡀⡠⠃⠀⡀⠀⠀⠀⠀⠀ / / /\ \ \__ _| |_ ___| |__   ___ _ __ 
-$red   ⠀⠀⠀ ⠀⢄⠀⠈⠢⡢⣳⡿$encol$green⣡⡟⠀⠀⠹⣎$endcol$red⢻⣝⣕⡴⠊⠀⡀⠀⠀⠀⠀ \ \/  \/ / _  | __/ __| '_ \ / _ \ '__|
-$red       ⢀⡀⠈⢓⣿⣾⡟$encol$green⣱⠏⠀⠀⠀⠀⠹⣦$endcol$red⢻⣿⣮⣒⠁⠀⡀⠀⠀⠀  \  /\  / (_| | || (__| | | |  __/ |  
-$red    ⠀⠀⠀⠀⠀⠩⢷⣿⡟$encol$green⣼⣯⣴⣞⣛⣙⣓⡦⣜⣧$endcol$red⡹⣿⡶⠍⠁⠀⠀⠀⠀   \/  \/ \__,_|\__\___|_| |_|\___|_| 
-$red    ⠀⠀⠀⠀⠀⢉⣽⢏$encol$green⣼⣿⡛⠉⣇⢿⡿⢸⠋⢙⣿⢷$endcol$red⡹⣯⣉⠁⠀⠀⠀⠀           FIREWALL ASSISTANT 
-$red    ⠀⠀⠀⠀⠀⣐⢎$encol$green⡾⠃⠈⠙⠷⣮⣵⣾⣥⠶⠛⠁⠈⢷⡜$endcol$red⣆⠀⠈⠁⠀⠀           SSH Botnet Bouncer
-$red    ⠀⠀⠀⠈⢡⢣$encol$green⣾⣁⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣈⣿⣌$endcol$red⠌⠁⠀⠀⠀                  V1.0
+$red    ⠀⠀⠀⠀⠀⠀⠀⠈⢆⢀⢣⣠⢣$encol$cyan⡟⢻⣌$endcol$red⢴⡴⡀⡠⠃⠀⡀⠀⠀⠀⠀⠀ / / /\ \ \__ _| |_ ___| |__   ___ _ __ 
+$red   ⠀⠀⠀ ⠀⢄⠀⠈⠢⡢⣳⡿$encol$cyan⣡⡟⠀⠀⠹⣎$endcol$red⢻⣝⣕⡴⠊⠀⡀⠀⠀⠀⠀ \ \/  \/ / _  | __/ __| '_ \ / _ \ '__|
+$red       ⢀⡀⠈⢓⣿⣾⡟$encol$cyan⣱⠏⠀⠀⠀⠀⠹⣦$endcol$red⢻⣿⣮⣒⠁⠀⡀⠀⠀⠀  \  /\  / (_| | || (__| | | |  __/ |  
+$red    ⠀⠀⠀⠀⠀⠩⢷⣿⡟$encol$cyan⣼⣯⣴⣞⣛⣙⣓⡦⣜⣧$endcol$red⡹⣿⡶⠍⠁⠀⠀⠀⠀   \/  \/ \__,_|\__\___|_| |_|\___|_| 
+$red    ⠀⠀⠀⠀⠀⢉⣽⢏$encol$cyan⣼⣿⡛⠉⣇⢿⡿⢸⠋⢙⣿⢷$endcol$red⡹⣯⣉⠁⠀⠀⠀⠀           FIREWALL ASSISTANT 
+$red    ⠀⠀⠀⠀⠀⣐⢎$encol$cyan⡾⠃⠈⠙⠷⣮⣵⣾⣥⠶⠛⠁⠈⢷⡜$endcol$red⣆⠀⠈⠁⠀⠀           SSH Botnet Bouncer
+$red    ⠀⠀⠀⠈⢡⢣$encol$cyan⣾⣁⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣈⣿⣌$endcol$red⠌⠁⠀⠀⠀                  V1.0
 $red    ⠀⠀⠀⠀⠓⠒⢒⠖⠖⡶⣶⣶⣿⣷⣷⣷⣾⣿⢷⡲⠲⣖⠚⠚⠂⠀⠀⠀
 $red    ⠀⠀⠀⠀⠀⠀⠁⢀⠜⠈⡼⠘⡏⡟⡟⢸⠡⢳⠁⠑⡄⠀⠑⠀⠀⠀⠀⠀
 $red    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⢠⠃⠀⡇⠀⡇⠀⢡⠀⠈⠀⠀⠀
 $endcol"
-sleep 2
+sleep 200
 clear
 #Clear the cursor
 tput civis
@@ -92,10 +93,10 @@ do
     tput cup 1 0
         if [[ $nbr_online -gt "1" ]]
         then
-        printf "$red                 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ WATCHER V1.0 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀$endcol$white \n"
+        printf "$red                 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ ◬  WATCHER V1.0 ◬  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀$endcol$white \n"
         echo -e "$red$nbr_online Users online :   "
         else
-        printf "$red                 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ WATCHER V1.0 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀$endcol$white \n"
+        printf "$red                 ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ ◬  WATCHER V1.0 ◬  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀$endcol$white \n"
         echo -e "$red$nbr_online User online :    "
         fi
     printf "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀$endcol$white \n"
@@ -110,7 +111,7 @@ do
         user_id=$(lslogins -u | grep $wuis | awk '{print $1}' )
         if [[ $user_id -gt "1000" ]]
             then
-            echo -e " $green$user_by \c$encol"
+            echo -e " $cyan$user_by \c$encol"
             else
             echo -e " $red$user_by \c$endcol"
         fi
@@ -134,7 +135,7 @@ do
     #Check format IPV4
     regex_ipv4="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
     #Check format IPV6 
-    regex_ipv6="(?<![:.\w])(?:[A-F0-9]{1,4}:){7}[A-F0-9]{1,4}(?![:.\w])"
+    regex_ipv6="\b(?:[0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}\b"
     
     #catch IPv4 and record 
     record=$(sudo cat /var/log/auth.log | tail -n 10 | grep ssh | awk '{ print $3,$5,$6,$7,$8,$9,$10,$12,$13,$14,$15,$16 }' | grep "'$regex_ipv4'\|Invalid\ user" >> watcher_record_ip4 )
@@ -148,7 +149,7 @@ do
     logz=$(sudo cat /var/log/auth.log | tail -n 20 | grep ssh | awk '{ print $1,$2,$3,$5,$6,$7,$8,$9,$10,$12,$13,$14,$15,$16  }' | grep "Invalid\| user")
     echo "$logz"
     tput cup 29 0
-    echo -e "$red▄ $endcol= Banned  $green▄ $endcol= Monitored"
+    echo -e "$red▄ $endcol= Banned  $cyan▄ $endcol= Monitored"
     tput cup 30 0
     printf "$red--------------------------------------------------------------------------------------------------------------------------------$endcol$white \n"
 
@@ -190,7 +191,7 @@ do
                                 sudo ufw deny from $ip to any &>/dev/null
                                 echo -e "\c $endcol"
                             else
-                                echo -e "$green▀\c $endcol"
+                                echo -e "$cyan▀\c $endcol"
                             fi
                         fi
 
@@ -221,13 +222,13 @@ do
                                 d="d"
                                 ip_ban=$( echo -e "$ip6 <br />" >> banban )
                                 var_banban=$(cat banban)
-                                regex_ipv6="(?<![:.\w])(?:[A-F0-9]{1,4}:){7}[A-F0-9]{1,4}(?![:.\w])"
+                                regex_ipv6="\b(?:[0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}\b"
                                 html=$( cat banban | sort | uniq >> $outputfile ) 
                                 #add new rule to firewall
                                 sudo ufw deny from $ip6 to any &>/dev/null
                                 echo -e "\c $endcol"
                                 else
-                                echo -e "$green▀\c $endcol"
+                                echo -e "$cyan▀\c $endcol"
                             fi
                         fi
                     (( m=m+1 ))
