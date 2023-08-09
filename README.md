@@ -9,7 +9,7 @@
                           \  /\  / (_| | || (__| | | |  __/ |  
                     ⠀⠀⠀   \/  \/ \__,_|\__\___|_| |_|\___|_| 
                    ⠀⠀⠀⠀⠀⠀⠀      FIREWALL ASSISTANT 
-                   ⠀⠀⠀⠀             Botnet Bouncer
+                   ⠀⠀⠀⠀          SSH Botnet Bouncer
                     ⠀⠀                   V1.0
                     
 
