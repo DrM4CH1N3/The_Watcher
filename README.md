@@ -34,7 +34,7 @@ Use:
                     
                     4)
                     Show Banned IPs:
-                    http://your-ip/Wall_of_the_shame.html
+                    Wall_of_the_shame.html
  
 
 
